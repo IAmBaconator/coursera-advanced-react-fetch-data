@@ -1,12 +1,23 @@
+import { use, useEffect } from 'react';
 import './App.css';
 
+const [user, setUser] = useState("");
+useEffect(() => {
+  fetch("https://randomuser.me/api/?results=1")
+    .then(response => response.json())
+    .then(data => setUser(data))
+    .catch(error => console.log(error));
+})
+
 function App() {
-  return (
+  return Object.keys(user).length > 0 ? (
     <div className="App">
       <header className="App-header">
         
       </header>
     </div>
+  ) : (
+    <h1>Data pending...</h1>
   );
 }
 
