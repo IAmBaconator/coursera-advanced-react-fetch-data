@@ -6,12 +6,6 @@ The project focuses on handling asynchronous operations in React and updating th
 
 ---
 
-# Project Description
-
-A React demo showcasing asynchronous data fetching from an external API and dynamic rendering using React hooks.
-
----
-
 # Key Concepts Demonstrated
 
 - Fetching data from an external API using the `fetch()` function
