@@ -1,15 +1,16 @@
-import { use, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css';
 
-const [user, setUser] = useState("");
-useEffect(() => {
-  fetch("https://randomuser.me/api/?results=1")
-    .then(response => response.json())
-    .then(data => setUser(data))
-    .catch(error => console.log(error));
-})
-
 function App() {
+  const [user, setUser] = useState([]);
+
+  useEffect(() => {
+    fetch("https://randomuser.me/api/?results=1")
+      .then(response => response.json())
+      .then(data => setUser(data))
+      .catch(error => console.log(error));
+  }, []);
+  
   return Object.keys(user).length > 0 ? (
     <div className="App">
       <header className="App-header">
