@@ -1,14 +1,18 @@
-import { useState, useEffect } from 'react';
+import React from 'react';
 import './App.css';
 
 function App() {
-  const [user, setUser] = useState([]);
+  const [user, setUser] = React.useState([]);
 
-  useEffect(() => {
+  const fetchData = () => {
     fetch("https://randomuser.me/api/?results=1")
-      .then(response => response.json())
-      .then(data => setUser(data))
-      .catch(error => console.log(error));
+      .then((response) => response.json())
+      .then((data) => setUser(data))
+      .catch((error) => console.log(error));
+  };
+
+  React.useEffect(() => {
+    fetchData();
   }, []);
   
   return Object.keys(user).length > 0 ? (
@@ -19,6 +23,7 @@ function App() {
         <img
           src={user.results[0].picture.large}
           title={user.results[0].name.first} {...user.results[0].name.last}
+          alt={user.results[0].name.first} {...user.results[0].name.last}
         />
       </header>
     </div>
